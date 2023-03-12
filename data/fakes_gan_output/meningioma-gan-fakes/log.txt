@@ -1,0 +1,122 @@
+Loading training set...
+
+Num images:  1416
+Image shape: [1, 128, 128]
+Label shape: [0]
+
+Constructing networks...
+Setting up PyTorch plugin "bias_act_plugin"... Done.
+Setting up PyTorch plugin "upfirdn2d_plugin"... Done.
+
+Generator             Parameters  Buffers  Output shape         Datatype
+---                   ---         ---      ---                  ---     
+mapping.fc0           262656      -        [16, 512]            float32 
+mapping.fc1           262656      -        [16, 512]            float32 
+mapping               -           512      [16, 12, 512]        float32 
+synthesis.b4.conv1    2622465     32       [16, 512, 4, 4]      float32 
+synthesis.b4.torgb    263169      -        [16, 1, 4, 4]        float32 
+synthesis.b4:0        8192        16       [16, 512, 4, 4]      float32 
+synthesis.b4:1        -           -        [16, 512, 4, 4]      float32 
+synthesis.b8.conv0    2622465     80       [16, 512, 8, 8]      float32 
+synthesis.b8.conv1    2622465     80       [16, 512, 8, 8]      float32 
+synthesis.b8.torgb    263169      -        [16, 1, 8, 8]        float32 
+synthesis.b8:0        -           16       [16, 512, 8, 8]      float32 
+synthesis.b8:1        -           -        [16, 512, 8, 8]      float32 
+synthesis.b16.conv0   2622465     272      [16, 512, 16, 16]    float16 
+synthesis.b16.conv1   2622465     272      [16, 512, 16, 16]    float16 
+synthesis.b16.torgb   263169      -        [16, 1, 16, 16]      float16 
+synthesis.b16:0       -           16       [16, 512, 16, 16]    float16 
+synthesis.b16:1       -           -        [16, 512, 16, 16]    float32 
+synthesis.b32.conv0   2622465     1040     [16, 512, 32, 32]    float16 
+synthesis.b32.conv1   2622465     1040     [16, 512, 32, 32]    float16 
+synthesis.b32.torgb   263169      -        [16, 1, 32, 32]      float16 
+synthesis.b32:0       -           16       [16, 512, 32, 32]    float16 
+synthesis.b32:1       -           -        [16, 512, 32, 32]    float32 
+synthesis.b64.conv0   1442561     4112     [16, 256, 64, 64]    float16 
+synthesis.b64.conv1   721409      4112     [16, 256, 64, 64]    float16 
+synthesis.b64.torgb   131585      -        [16, 1, 64, 64]      float16 
+synthesis.b64:0       -           16       [16, 256, 64, 64]    float16 
+synthesis.b64:1       -           -        [16, 256, 64, 64]    float32 
+synthesis.b128.conv0  426369      16400    [16, 128, 128, 128]  float16 
+synthesis.b128.conv1  213249      16400    [16, 128, 128, 128]  float16 
+synthesis.b128.torgb  65793       -        [16, 1, 128, 128]    float16 
+synthesis.b128:0      -           16       [16, 128, 128, 128]  float16 
+synthesis.b128:1      -           -        [16, 128, 128, 128]  float32 
+---                   ---         ---      ---                  ---     
+Total                 22944401    44448    -                    -       
+
+
+Discriminator  Parameters  Buffers  Output shape         Datatype
+---            ---         ---      ---                  ---     
+b128.fromrgb   256         16       [16, 128, 128, 128]  float16 
+b128.skip      32768       16       [16, 256, 64, 64]    float16 
+b128.conv0     147584      16       [16, 128, 128, 128]  float16 
+b128.conv1     295168      16       [16, 256, 64, 64]    float16 
+b128           -           16       [16, 256, 64, 64]    float16 
+b64.skip       131072      16       [16, 512, 32, 32]    float16 
+b64.conv0      590080      16       [16, 256, 64, 64]    float16 
+b64.conv1      1180160     16       [16, 512, 32, 32]    float16 
+b64            -           16       [16, 512, 32, 32]    float16 
+b32.skip       262144      16       [16, 512, 16, 16]    float16 
+b32.conv0      2359808     16       [16, 512, 32, 32]    float16 
+b32.conv1      2359808     16       [16, 512, 16, 16]    float16 
+b32            -           16       [16, 512, 16, 16]    float16 
+b16.skip       262144      16       [16, 512, 8, 8]      float16 
+b16.conv0      2359808     16       [16, 512, 16, 16]    float16 
+b16.conv1      2359808     16       [16, 512, 8, 8]      float16 
+b16            -           16       [16, 512, 8, 8]      float16 
+b8.skip        262144      16       [16, 512, 4, 4]      float32 
+b8.conv0       2359808     16       [16, 512, 8, 8]      float32 
+b8.conv1       2359808     16       [16, 512, 4, 4]      float32 
+b8             -           16       [16, 512, 4, 4]      float32 
+b4.mbstd       -           -        [16, 513, 4, 4]      float32 
+b4.conv        2364416     16       [16, 512, 4, 4]      float32 
+b4.fc          4194816     -        [16, 512]            float32 
+b4.out         513         -        [16, 1]              float32 
+---            ---         ---      ---                  ---     
+Total          23882113    352      -                    -       
+
+Setting up augmentation...
+Distributing across 1 GPUs...
+Setting up training phases...
+Exporting sample images...
+Initializing logs...
+Training for 120 kimg...
+
+tick 0     kimg 0.0      time 32s          sec/tick 6.9     sec/kimg 433.12  maintenance 24.9   cpumem 4.45   gpumem 11.54  augment 0.000
+Evaluating metrics...
+{"results": {"fid50k_full": 308.62339657045493}, "metric": "fid50k_full", "total_time": 315.90023612976074, "total_time_str": "5m 16s", "num_gpus": 1, "snapshot_pkl": "network-snapshot-000000.pkl", "timestamp": 1678082971.6285203}
+tick 1     kimg 4.0      time 6m 57s       sec/tick 64.9    sec/kimg 16.22   maintenance 319.8  cpumem 4.54   gpumem 9.36   augment 0.005
+tick 2     kimg 8.0      time 8m 01s       sec/tick 64.8    sec/kimg 16.19   maintenance 0.0    cpumem 4.54   gpumem 3.54   augment 0.011
+tick 3     kimg 12.0     time 9m 06s       sec/tick 64.6    sec/kimg 16.14   maintenance 0.0    cpumem 4.54   gpumem 3.54   augment 0.015
+tick 4     kimg 16.0     time 10m 11s      sec/tick 64.7    sec/kimg 16.19   maintenance 0.0    cpumem 4.54   gpumem 3.54   augment 0.018
+tick 5     kimg 20.0     time 11m 15s      sec/tick 64.2    sec/kimg 16.05   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.024
+tick 6     kimg 24.0     time 12m 19s      sec/tick 64.4    sec/kimg 16.11   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.026
+tick 7     kimg 28.0     time 13m 24s      sec/tick 64.2    sec/kimg 16.05   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.031
+tick 8     kimg 32.0     time 14m 28s      sec/tick 64.5    sec/kimg 16.12   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.034
+tick 9     kimg 36.0     time 15m 32s      sec/tick 64.4    sec/kimg 16.09   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.040
+tick 10    kimg 40.0     time 16m 37s      sec/tick 64.5    sec/kimg 16.12   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.043
+tick 11    kimg 44.0     time 17m 42s      sec/tick 64.6    sec/kimg 16.16   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.045
+tick 12    kimg 48.0     time 18m 46s      sec/tick 64.7    sec/kimg 16.18   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.048
+tick 13    kimg 52.0     time 19m 50s      sec/tick 63.7    sec/kimg 15.92   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.052
+tick 14    kimg 56.0     time 20m 54s      sec/tick 63.5    sec/kimg 15.87   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.055
+tick 15    kimg 60.0     time 21m 57s      sec/tick 63.6    sec/kimg 15.90   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.058
+tick 16    kimg 64.0     time 23m 01s      sec/tick 63.8    sec/kimg 15.95   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.062
+tick 17    kimg 68.0     time 24m 05s      sec/tick 63.6    sec/kimg 15.89   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.066
+tick 18    kimg 72.0     time 25m 08s      sec/tick 63.7    sec/kimg 15.94   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.071
+tick 19    kimg 76.0     time 26m 12s      sec/tick 63.5    sec/kimg 15.87   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.073
+tick 20    kimg 80.0     time 27m 16s      sec/tick 63.9    sec/kimg 15.97   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.075
+tick 21    kimg 84.0     time 28m 19s      sec/tick 63.7    sec/kimg 15.91   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.080
+tick 22    kimg 88.0     time 29m 23s      sec/tick 63.7    sec/kimg 15.92   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.082
+tick 23    kimg 92.0     time 30m 27s      sec/tick 63.5    sec/kimg 15.87   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.085
+tick 24    kimg 96.0     time 31m 30s      sec/tick 63.6    sec/kimg 15.90   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.090
+tick 25    kimg 100.0    time 32m 34s      sec/tick 63.5    sec/kimg 15.88   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.093
+tick 26    kimg 104.0    time 33m 38s      sec/tick 63.7    sec/kimg 15.93   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.096
+tick 27    kimg 108.0    time 34m 41s      sec/tick 63.6    sec/kimg 15.89   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.100
+tick 28    kimg 112.0    time 35m 45s      sec/tick 63.7    sec/kimg 15.93   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.100
+tick 29    kimg 116.0    time 36m 48s      sec/tick 63.6    sec/kimg 15.90   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.104
+tick 30    kimg 120.0    time 37m 52s      sec/tick 63.2    sec/kimg 15.86   maintenance 0.0    cpumem 4.42   gpumem 3.54   augment 0.106
+Evaluating metrics...
+{"results": {"fid50k_full": 90.9748980894805}, "metric": "fid50k_full", "total_time": 300.4664828777313, "total_time_str": "5m 00s", "num_gpus": 1, "snapshot_pkl": "network-snapshot-000120.pkl", "timestamp": 1678085196.393103}
+
+Exiting...
